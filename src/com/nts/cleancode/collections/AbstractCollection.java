@@ -3,7 +3,7 @@ package com.nts.cleancode.collections;
 public abstract class AbstractCollection implements Collection {
 	public void addAll(AbstractCollection c) {
 		if (c instanceof Set) {
-			Set s = (Set)c;
+			AbstractSet s = (AbstractSet)c;
 			for (int i=0; i < s.size(); i++) {
 				if (!contains(s.get(i))) {
 					add(s.get(i));
@@ -11,7 +11,7 @@ public abstract class AbstractCollection implements Collection {
 			}
 			
 		} else if (c instanceof List) {
-			List l = (List)c;
+			AbstractList l = (AbstractList)c;
 			for (int i=0; i < l.size(); i++) {
 				if (!contains(l.get(i))) {
 					add(l.get(i));

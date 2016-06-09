@@ -1,8 +1,6 @@
 package com.nts.cleancode.collections;
 
 public class Set extends AbstractSet {
-	private static int INITIAL_CAPACITY = 10;
-	private Object[] elements = new Object[INITIAL_CAPACITY];
 	private int size = 0;
 	private boolean readOnly;
 
@@ -57,11 +55,7 @@ public class Set extends AbstractSet {
 		return false;
 	}
 
-	public Object get(int index) {
-		return elements[index];
-	}
-
-	public void addAll(List l) {
+	public void addAll(AbstractList l) {
 		for (int i = 0; i < l.size(); i++) {
 			if (!contains(l.get(i)))
 				elements[size++] = l.get(i);
