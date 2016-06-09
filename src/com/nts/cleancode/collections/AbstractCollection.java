@@ -1,9 +1,15 @@
 package com.nts.cleancode.collections;
 
-public abstract class AbstractCollection implements Collection {
+public abstract class AbstractCollection {
+	public abstract boolean isEmpty();
+	public abstract void add(Object element);
+	public abstract boolean remove(Object element);
+	public abstract boolean contains(Object element);
+	public abstract int size();
+	
 	public void addAll(AbstractCollection c) {
 		if (c instanceof Set) {
-			AbstractSet s = (AbstractSet)c;
+			Set s = (Set)c;
 			for (int i=0; i < s.size(); i++) {
 				if (!contains(s.get(i))) {
 					add(s.get(i));
@@ -11,7 +17,7 @@ public abstract class AbstractCollection implements Collection {
 			}
 			
 		} else if (c instanceof List) {
-			AbstractList l = (AbstractList)c;
+			List l = (List)c;
 			for (int i=0; i < l.size(); i++) {
 				if (!contains(l.get(i))) {
 					add(l.get(i));
