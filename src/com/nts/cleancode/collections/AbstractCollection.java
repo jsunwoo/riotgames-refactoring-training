@@ -15,15 +15,10 @@ public abstract class AbstractCollection {
 	}
 
 	public abstract boolean isEmpty();
-
 	public abstract void add(Object element);
-
 	public abstract boolean remove(Object element);
-
 	public abstract boolean contains(Object element);
-
 	public abstract int size();
-
 	public Object get(int index) {
 		return elements[index];
 	}

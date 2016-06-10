@@ -21,27 +21,36 @@ public class Map{
 		add(m.keys[i], m.values[i]);
 	}
 	public void add(Object key, Object value) {
-		if (!readOnly) {
+		if (readOnly)
+			return;
 			for (int i = 0; i < size; i++)
 				if (keys[i].equals(key)) {
 					values[i] = value;
 					return;
 				}
 
-			int newSize = size + 1;
-			if (newSize > keys.length) {
-				Object[] newKeys = new Object[keys.length + INITIAL_CAPACITY];
-				Object[] newValues = new Object[keys.length + INITIAL_CAPACITY];
-				System.arraycopy(keys, 0, newKeys, 0, size);
-				System.arraycopy(values, 0, newValues, 0, size);
-				keys = newKeys;
-				values = newValues;
-			}
+			
+			if (shouldgrow()) 
+				grow();
+			
 
 			keys[size] = key;
 			values[size] = value;
 			size++;
 		}
+	
+
+	protected void grow() {
+		Object[] newKeys = new Object[keys.length + INITIAL_CAPACITY];
+		Object[] newValues = new Object[keys.length + INITIAL_CAPACITY];
+		System.arraycopy(keys, 0, newKeys, 0, size);
+		System.arraycopy(values, 0, newValues, 0, size);
+		keys = newKeys;
+		values = newValues;
+	}
+
+	protected boolean shouldgrow() {
+		return size + 1 > keys.length;
 	}
 
 	public int size() {
