@@ -26,4 +26,14 @@ public abstract class AbstractCollection implements Collection {
 	
 	public void add(Object key, Object value) {
 	}
+
+	public boolean isEmpty();
+
+	public void add(Object element);
+
+	public boolean remove(Object element);
+
+	public boolean contains(Object element);
+
+	public int size();
 }
