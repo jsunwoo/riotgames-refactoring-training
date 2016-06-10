@@ -1,8 +1,7 @@
 package com.nts.cleancode.collections;
 
 public class Set extends AbstractCollection{
-	private static int INITIAL_CAPACITY = 10;
-	private Object[] elements = new Object[INITIAL_CAPACITY];
+
 	private int size = 0;
 	private boolean readOnly;
 
@@ -67,10 +66,6 @@ public class Set extends AbstractCollection{
 				return true;
 			}
 		return false;
-	}
-
-	public Object getElementAt(int index) {
-		return elements[index];
 	}
 
 	public void addAll(List l) {

@@ -1,23 +1,13 @@
 package com.nts.cleancode.collections;
 
 public abstract class AbstractCollection {
-	public void addAll(AbstractCollection c) {
-		if (c instanceof Set) {
-			Set s = (Set)c;
-			for (int i=0; i < s.size(); i++) {
-				if (!contains(s.getElementAt(i))) {
-					add(s.getElementAt(i));
-				}
+	protected static int INITIAL_CAPACITY = 10;
+	protected Object[] elements = new Object[INITIAL_CAPACITY];
+	public void addAll(AbstractCollection collection) {
+		for (int i=0; i < collection.size(); i++) {
+			if (!contains(collection.get(i))) {
+				add(collection.get(i));
 			}
-			
-		} else if (c instanceof List) {
-			List l = (List)c;
-			for (int i=0; i < l.size(); i++) {
-				if (!contains(l.get(i))) {
-					add(l.get(i));
-				}
-			}
-		
 		}
 	}
 	
@@ -33,4 +23,8 @@ public abstract class AbstractCollection {
 	public abstract boolean contains(Object element);
 
 	public abstract int size();
+
+	public Object get(int index) {
+		return elements[index];
+	}
 }
