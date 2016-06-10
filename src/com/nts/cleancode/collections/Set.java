@@ -68,12 +68,7 @@ public class Set extends AbstractCollection{
 		return false;
 	}
 
-	public void addAll(List l) {
-		for (int i = 0; i < l.size(); i++) {
-			if (!contains(l.get(i)))
-				elements[size++] = l.get(i);
-		}
-	}
+
 
 	public int capacity() {
 		return elements.length;
